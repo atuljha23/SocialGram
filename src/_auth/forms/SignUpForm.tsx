@@ -30,7 +30,7 @@ const SignUpForm = () => {
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
     useCreateUserAccount();
 
-  const { mutateAsync: signInAccount, isLoading: isSigningIn } =
+  const { mutateAsync: signInAccount, isPending: isSigningIn } =
     useSignInAccount();
 
   // 1. Define your form.
