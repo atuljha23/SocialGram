@@ -1,7 +1,6 @@
 import { INewPost, INewUser } from "@/types";
 import { ID, Query } from "appwrite";
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
-import { useSignOutAccount } from "../react-query/queriesAndMutations";
 
 export async function createUserAccount(user: INewUser) {
   try {
@@ -179,4 +178,56 @@ export async function getRecentPosts() {
   );
   if (!posts) throw Error;
   return posts;
+}
+
+export async function likePost(postId: string, likesArray: string[]) {
+  try {
+    const updatedPost = await databases.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.postCollectionId,
+      postId,
+      {
+        likes: likesArray,
+      }
+    );
+    if (!updatedPost) throw Error;
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function savePost(postId: string, userId: string) {
+  try {
+    const updatedPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.savesCollectionId,
+      ID.unique(),
+      {
+        user: userId,
+        post: postId,
+      }
+    );
+    if (!updatedPost) throw Error;
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function deleteSavedPost(savedRecordId: string) {
+  try {
+    const deletePost = await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.savesCollectionId,
+      savedRecordId
+    );
+    if (!deletePost) throw Error;
+    return { status: "OK Deleted" };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 }
