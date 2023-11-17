@@ -21,3 +21,12 @@ export const SigninValidation = z.object({
     .string()
     .min(6, { message: "Password must be at least 6 characters long" }),
 });
+
+export const PostValidation = z.object({
+  caption: z.string().min(5, {
+    message: "Caption must be at least 2 characters.",
+  }),
+  file: z.custom<File[]>(),
+  location: z.string().min(2).max(50),
+  tags: z.string(),
+});
