@@ -301,7 +301,9 @@ export async function deletePost(postId: string, imageId: string) {
       appwriteConfig.postCollectionId,
       postId
     );
-    if (!deletedPost) throw Error;
+    if (!deletedPost) {
+      console.log("Error deleting post");
+    }
     return { status: "OK Deleted" };
   } catch (error) {
     console.log(error);
