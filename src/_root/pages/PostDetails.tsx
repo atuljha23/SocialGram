@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetPostById } from "@/lib/react-query/queriesAndMutations";
 import moment from "moment";
-import React from "react";
+
 import { Link, useParams } from "react-router-dom";
 
 const PostDetails = () => {

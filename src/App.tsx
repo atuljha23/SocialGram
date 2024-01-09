@@ -1,4 +1,3 @@
-import React from "react";
 import "./globals.css";
 import { Routes, Route } from "react-router-dom";
 import SignInForm from "./_auth/forms/SignInForm";
