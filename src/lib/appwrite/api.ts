@@ -126,6 +126,7 @@ export async function CreatePost(post: INewPost) {
   }
 }
 
+// ============================== UPLOAD FILE
 export async function uploadFile(file: File) {
   try {
     const uploadedFile = await storage.createFile(
@@ -133,10 +134,10 @@ export async function uploadFile(file: File) {
       ID.unique(),
       file
     );
+
     return uploadedFile;
   } catch (error) {
     console.log(error);
-    return error;
   }
 }
 
