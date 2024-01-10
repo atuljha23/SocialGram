@@ -265,7 +265,7 @@ export async function updatePost(post: IUpdatePost) {
         deleteFile(uploadedFile.$id);
         throw Error;
       }
-      image = { ...image, imageUrl: fileUrl, imageId: uploadedFile.$id };
+      image = { ...image, imageUrl: fileUrl as URL, imageId: uploadedFile.$id };
     }
 
     // Convert tags in array
@@ -313,6 +313,7 @@ export async function deletePost(postId: string, imageId: string) {
 }
 
 export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const queries: any[] = [Query.orderDesc("$updatedAt"), Query.limit(9)];
 
   if (pageParam) {

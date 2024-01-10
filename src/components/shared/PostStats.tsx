@@ -1,4 +1,3 @@
-import { useUserContext } from "@/context/AuthContext";
 import {
   useDeleteSavedPost,
   useGetCurrentUser,
@@ -20,7 +19,7 @@ const PostStats = ({ post, userId }: PostStatsProp) => {
   const [likes, setLikes] = useState(likesList);
   const [isSaved, setIsSaved] = useState(false);
 
-  const { mutate: likePost, isPending: isLikeStatusLoading } = useLikePost();
+  const { mutate: likePost } = useLikePost();
   const { mutate: savePost, isPending: isSavingPost } = useSavePost();
   const { mutate: deleteSavedPost, isPending: isDeletingSaved } =
     useDeleteSavedPost();

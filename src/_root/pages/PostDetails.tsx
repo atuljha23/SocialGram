@@ -17,7 +17,7 @@ const PostDetails = () => {
   return (
     <>
       <div className="post_details-container">
-        {isPending ? (
+        {isPending || !post ? (
           <Loader />
         ) : (
           <div className="post_details-card">
