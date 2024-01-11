@@ -115,7 +115,8 @@ const SignInForm = () => {
             )}
           </Button>
           <p className="text-small-regular text-light-2 text-center mt-2">
-            Don't have an account?{" "}
+            Don't have an account? Use demo@demouser.com and password:
+            Demo@123456
             <Link
               to="/sign-up"
               className="text-primary-500 text-small-semibold ml-1"
